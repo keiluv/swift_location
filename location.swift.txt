@@ -1,0 +1,42 @@
+//위치정보 받아오기
+
+//info.plist에 NSLocationWhenInUseUsageDescription을 추가하고 옆에 위치기반 컨텐츠추천을 위해 gps정보가 필요합니다 라는 문구를 추가
+
+import CoreLocation
+
+class ViewController: UIViewController, CLLocationManagerDelegate {
+//CLLocationManagerDelegate를 추가
+
+	let actionButton = JJFloatingActionButton()
+
+    	var locationManager:CLLocationManager = CLLocationManager()
+
+    
+
+    	var latitude: String = ""
+
+    	var longitude: String = ""
+
+	override func viewDidLoad() {
+		 locationManager = CLLocationManager()
+
+       		 locationManager.delegate = self
+
+       		 locationManager.requestWhenInUseAuthorization()
+
+    		 locationManager.desiredAccuracy = kCLLocationAccuracyBest
+
+      		 locationManager.startUpdatingLocation()
+
+      		 locationManager.requestWhenInUseAuthorization()
+
+        		let coor = locationManager.location?.coordinate
+
+       		 //latitude = coor?.latitude
+
+       		 //longitude = coor?.longitude
+
+	}
+
+
+}
